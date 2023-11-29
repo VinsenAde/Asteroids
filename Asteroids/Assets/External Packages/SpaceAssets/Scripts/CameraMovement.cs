@@ -17,6 +17,7 @@ public class CameraMovement : MonoBehaviour {
                 currentScrollPosition = transform.position.y / cameraSpeed;
                 break;
         }
+
     }
 	
 	void Update () {

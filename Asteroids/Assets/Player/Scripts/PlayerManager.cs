@@ -43,6 +43,8 @@ public class PlayerManager : MonoBehaviour
     private float timeToGameOver = 2f;
     #endregion
 
+    [SerializeField]
+    private float followSpeed = 5f;  // Adjust the follow speed as needed
     #region Private attributes
     GameObject playerShip;
     GameObject playerShipBroken;
@@ -87,6 +89,8 @@ public class PlayerManager : MonoBehaviour
                 fragmentPositions[i] = child.transform.localPosition;
             }
         }
+        playerShip.transform.position = new Vector3(0f, 0f, 0f);  // Adjust as needed
+        playerShipBroken.transform.position = new Vector3(0f, 0f, 0f);
     }
     #endregion
     
@@ -124,8 +128,27 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
-    #region Death
-    public void Die()
+
+
+    private void Update()
+    {
+        // Check if the main camera exists
+        if (Camera.main != null)
+        {
+            // Get the camera's position in the world
+            Vector3 targetPosition = Camera.main.transform.position;
+
+            // Keep the X and Z components of the player unchanged
+            targetPosition.x = transform.position.x;
+            targetPosition.z = transform.position.z;
+
+            // Interpolate only the Y component of the player's position towards the camera's position
+            transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        }
+    }
+
+        #region Death
+        public void Die()
     {
         Rigidbody playerShipRB = playerShip.GetComponent<Rigidbody>();
         Vector3 baseVelocity = playerShipRB.velocity;
