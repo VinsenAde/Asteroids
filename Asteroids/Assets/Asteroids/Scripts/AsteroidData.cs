@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+namespace Script
+{
+    
 [CreateAssetMenu(fileName = "AsteroidData", menuName = "Asteroids/AsteroidData", order = 1)]
 public class AsteroidData : ScriptableObject
 {
@@ -46,5 +49,8 @@ public class AsteroidData : ScriptableObject
     {
         return fragmentToSpawn;
     }
+    
     #endregion
+}
+
 }

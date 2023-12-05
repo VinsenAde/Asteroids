@@ -120,13 +120,10 @@ public class SoundManager : MonoBehaviour
     public void SetSFXVolumeSlider(Slider slider)
     {
         SetSFXVolume(slider.value);
-        if (!UIManager.Instance.IsInitialSFXSLiderSet())
-        {
-            if (sfxPreviewTimeInterval <= Time.time - lastSFXPreviewPlayed)
+        if (!UIManager.Instance.IsInitialSFXSLiderSet() && sfxPreviewTimeInterval <= Time.time - lastSFXPreviewPlayed)
             {
                 PlaySFX(sfxPreviewAudioSource);
                 lastSFXPreviewPlayed = Time.time;
-            }
         }
         else
         {

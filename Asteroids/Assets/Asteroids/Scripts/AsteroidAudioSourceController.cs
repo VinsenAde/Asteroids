@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+namespace Script
+{
+    
+}
 [RequireComponent(typeof(AudioSource))]
 public class AsteroidAudioSourceController : MonoBehaviour
 {

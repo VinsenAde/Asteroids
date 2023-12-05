@@ -1,27 +1,41 @@
-﻿using UnityEngine;
+﻿using Script;
+using UnityEngine;
 
-[RequireComponent(typeof(AsteroidController))]
-public class AsteroidCollider : MonoBehaviour
+
+
+namespace Scripts
 {
-
-    #region Private attributes
-    AsteroidController asteroidController;
-    #endregion
-
-    #region Start
-    private void Start()
+    [RequireComponent(typeof(AsteroidController))]
+    public class AsteroidCollider : MonoBehaviour
     {
-        asteroidController = GetComponent<AsteroidController>();
-    }
-    #endregion
 
-    #region Collisions
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == GameManager.Instance.GetProjectileTag() || other.gameObject.tag == GameManager.Instance.GetPlayerShipTag())
+        #region Private attributes
+
+        AsteroidController asteroidController;
+
+        #endregion
+
+        #region Start
+
+        private void Start()
         {
-            asteroidController.Explode();
+            asteroidController = GetComponent<AsteroidController>();
         }
+
+        #endregion
+
+        #region Collisions
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == GameManager.Instance.GetProjectileTag() ||
+                other.gameObject.tag == GameManager.Instance.GetPlayerShipTag())
+            {
+                asteroidController.Explode();
+            }
+        }
+
+        #endregion
     }
-    #endregion
+
 }

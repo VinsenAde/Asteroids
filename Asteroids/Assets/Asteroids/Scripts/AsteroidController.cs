@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Script;
+using Scripts;
+using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
 {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Script;
+using UnityEngine;
 
 [RequireComponent(typeof(ProjectileController))]
 public class ProjectileCollider: MonoBehaviour

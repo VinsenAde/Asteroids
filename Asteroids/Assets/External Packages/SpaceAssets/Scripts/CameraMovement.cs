@@ -10,10 +10,12 @@ public class CameraMovement : MonoBehaviour {
         switch (SpaceManager.instance.scrollDirection)
         {
             case ScrollDirection.LeftToRight:
+                
             case ScrollDirection.RightToLeft:
                 currentScrollPosition = transform.position.x / cameraSpeed;
                 break;
-            case ScrollDirection.DownToUp: case ScrollDirection.UpToDown:
+            case ScrollDirection.DownToUp: 
+            case ScrollDirection.UpToDown:
                 currentScrollPosition = transform.position.y / cameraSpeed;
                 break;
         }
